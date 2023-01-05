@@ -25,10 +25,11 @@ public final class ResourcesIoUtils {
 	 * Читает ресурс из хранилища (берет из контекста потока)
 	 *
 	 * @param fullPathName полный путь к ресурсу
+	 * @return
 	 * @return ресурс как стрим
 	 * @throws NoSuchElementException если не нашел ресурс
 	 */
-	public static Object readResource(final String fullPathName) throws NoSuchElementException {
+	public static InputStream readResource(final String fullPathName) throws NoSuchElementException {
 		return readResource(Thread.currentThread().getContextClassLoader(), fullPathName);
 	}
 
