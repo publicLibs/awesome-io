@@ -4,6 +4,15 @@ import java.io.InputStream;
 import java.util.NoSuchElementException;
 
 public final class ResourcesIoUtils {
+	public static InputStream readResource(final Class<?> contextClass, final String fullPathName)
+			throws NoSuchElementException {
+		final var resource = contextClass.getClassLoader().getResourceAsStream(fullPathName);
+		if (resource == null) {
+			throw new NoSuchElementException(String.format("%s not found in %s", fullPathName, contextClass.getName()));
+		}
+		return resource;
+	}
+
 	/**
 	 * Читает ресурс из хранилища
 	 *
