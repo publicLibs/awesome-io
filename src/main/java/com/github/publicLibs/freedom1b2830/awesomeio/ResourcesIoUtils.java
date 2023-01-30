@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 public final class ResourcesIoUtils {
 	public static InputStream readResource(final Class<?> contextClass, final String fullPathName)
 			throws NoSuchElementException {
-		final var resource = contextClass.getClassLoader().getResourceAsStream(fullPathName);
+		final InputStream resource = contextClass.getClassLoader().getResourceAsStream(fullPathName);
 		if (resource == null) {
 			throw new NoSuchElementException(String.format("%s not found in %s", fullPathName, contextClass.getName()));
 		}
@@ -23,7 +23,7 @@ public final class ResourcesIoUtils {
 	 */
 	public static InputStream readResource(final ClassLoader contextClassLoader, final String fullPathName)
 			throws NoSuchElementException {
-		final var resource = contextClassLoader.getResourceAsStream(fullPathName);
+		final InputStream resource = contextClassLoader.getResourceAsStream(fullPathName);
 		if (resource == null) {
 			throw new NoSuchElementException(String.format("%s not found in %s", fullPathName, contextClassLoader));
 		}
